@@ -1,0 +1,10 @@
+[package]
+name = "vlm"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+vlm_macro={path = "../vlm_macro"}
+vlm_macro_derive.workspace = true
+tokio.workspace=true
+warp.workspace=true
