@@ -1,15 +1,15 @@
+mod web_1;
+
 use std::error::Error;
 
-use web_1::{VlmContentType, EJS, HTML, XML};
-
-pub mod web_1;
-pub mod span;
-
+pub use web_1::{VlmContentType, EJS, HTML, XML};
+pub type VlmHost=[u8; 4];
+pub type VlmPort=u16;
 
 // --- Trait definition for a Virtual Environment for a language ---
 pub trait VirtualEnv {
     /// Returns the name of the language environment.
-    fn name(&self) -> &str;
+    fn name(&self,adrr:(VlmHost,VlmPort)) -> &str;
     
     /// Detects if the environment is “active” (i.e. already initialized).
     fn is_active(&self) -> Result<bool, Box<dyn Error>>;

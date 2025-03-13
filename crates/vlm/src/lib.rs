@@ -1,11 +1,25 @@
-use vlm_macro::web::span::VLMSpanUtils;
-pub use vlm_macro::{VlmHost,VLM,VlmPort,web::web_1::{EJS,HTML,XML,VlmContentType}};
+pub mod common;
+
+
+use std::marker::PhantomData;
+
 use vlm_macro_derive::VLM;
+pub use vlm_macro::web::{VlmHost,VlmPort,VirtualEnv,EJS,HTML,VlmContentType,XML};
+
+
 
 #[derive(VLM)]
-pub struct Vlm;
+pub struct Vlm<V, U> {
+    _phantom: PhantomData<(U, V)>,
+}
 
-// create a rust-go cli container
+impl<V, U> Vlm<V, U> {
+    pub fn new() -> Self {
+        Self { _phantom: PhantomData }
+    }
+}
+
+
 
 
 
